@@ -1,9 +1,28 @@
-temp = int(input('기온은 어때요?'))
-if 30 <= temp:
-    print('날씨가 너무 덥네유. 나가지마세유')
-elif 10 <= temp & temp < 30:
-    print('날씨가 좋아유!!, 나가노세요!!')
-elif 0 <= temp < 10:
-    print('조금 쌀쌀하니 따닷하게 하고 나가유!!')
-else:
-    print('추워 디지것는디 어딜나가유!!')
+gun = 10 
+
+def checkpoint(soldiers): #경계근무
+    gun = 20 #지역변수 : 함수내 gun이라는 변수
+    gun = gun - soldiers
+    print('[함수 내] 남은 총 : {0}'.format(gun))
+
+print("전체총 : {0}".format(gun))
+checkpoint(2) #2명이 경계근무나감
+print('남은 총 : {0}'.format(gun))
+
+gun = 10 
+
+# def checkpoint(soldiers): #경계근무
+#     global gun #전역변수 : 전역 공간에 있는 gun을 사용 
+#     gun = gun - soldiers
+#     print('[함수 내] 남은 총 : {0}'.format(gun))
+
+
+def checkpoint_ret(gun, soldiers):
+    gun = gun - soldiers
+    print('[함수 내] 남은 총 : {0}'.format(gun))
+    return gun
+
+print("전체총 : {0}".format(gun))
+# checkpoint(2) #2명이 경계근무나감
+gun = checkpoint_ret(gun, 2)
+print('남은 총 : {0}'.format(gun))
